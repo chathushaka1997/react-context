@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import FormElement from "./FormElement";
+import ItemList from "./ItemList";
+import { ListProvider } from "./ListContext";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ListProvider>
+      <Router>
+        <Switch>
+          <Route path="/itemlist">
+            <ItemList />
+          </Route>
+
+          <Route path="/">
+            <FormElement />
+          </Route>
+        </Switch>
+      </Router>
+    </ListProvider>
   );
 }
 
